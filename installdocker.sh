@@ -18,7 +18,8 @@ echo "Ready to automation" \
     && add-apt-repository ppa:alessandro-strada/ppa -y \
     && echo "OK that works" && sleep 2 \
     && apt update && apt install -y docker-ce google-drive-ocamlfuse \
-    && mkdir /home/$USER/GoogleDrive
+    && mkdir -p /home/$USER/GoogleDrive \
+    && chown -R $USER:$USER /home/$USER/GoogleDrive \
     && systemctl enable docker \
     && systemctl start docker \
     && curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
